@@ -3,6 +3,8 @@ if __FILE__ == $0
   say_hello = "|H|E|L|L|O|!|"
 
   str = <<-eos.gsub(/^\s*\|/, '')
+    |#!/usr/bin/env ruby
+    |
     |class Persion
     |
     |  def say_hello
@@ -20,8 +22,15 @@ if __FILE__ == $0
 
   print str
 
-  File.open('/tmp/persion.rb', 'w') do |file|
-    file.write str
+  file_name = '/tmp/persion.rb'
+
+  begin
+    File.open(file_name, 'w') do |file|
+      file.write str
+    end
+    File.chmod 0755, file_name
+  rescue Exception => e
+    p e
   end
 
 end
