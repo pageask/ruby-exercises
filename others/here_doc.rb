@@ -1,8 +1,11 @@
+require_relative 'core_ext'
+
+
 if __FILE__ == $0
 
   say_hello = "|H|E|L|L|O|!|"
 
-  str = <<-eos.gsub(/^\s*\|/, '')
+  str = <<-eos.margin
     |#!/usr/bin/env ruby
     |
     |class Persion
